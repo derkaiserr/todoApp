@@ -1,0 +1,168 @@
+.tile{
+    height: 12rem;
+    min-width:12rem;
+    background: url(./Images/tileBackground.svg) ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    box-sizing: border-box;
+    color: #fff;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+
+
+
+.buttonz{
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+}
+.buttonz button{
+    border: none;
+    background-color: #ffffff;
+    color: #1a2824;
+    padding: 0.3rem 0.6rem;
+    border-radius: 10px;
+}
+
+.tileHead{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    
+}
+
+
+.date{
+    font-size: 11px;
+}
+/* .tile >  p:nth-child(1){
+    word-wrap: break-word;
+    /* font-size: 25px; */
+
+
+.tiles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow-x: scroll;
+    gap: 3rem;
+    /* padding:  0 2r; */
+
+    
+}
+
+.tiles::-webkit-scrollbar{
+    display: none;
+}
+
+.user-icon{
+    color: #ddb;
+    background-color: #1a2824;
+    padding: 0.5rem;
+    font-size: 9px;
+    border-radius: 30px;
+}
+.first-icons{
+    display: flex;
+    align-items: center;
+    gap: 75vw;
+    margin: 0 0 1.5rem;
+
+}
+
+#tasks{
+    margin: 3rem 0 1rem;
+}
+
+.welcome{
+    line-height: 25px;
+    margin: 0 0 1rem;
+}
+.welcome > p:nth-child(1){
+    font-size: 28px;
+    font-weight: 500;
+    margin: 0 0 0.3rem;
+}
+
+.fa-calendar-days{
+    color: #c5c5c5;
+    background-color: #1a2824;
+    font-size: 23px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    padding:  14px;
+    
+}
+
+.task{
+    display: grid;
+    grid-template-columns: 0.8fr 4fr 1fr;
+    grid-gap: 2rem;
+    margin: 2rem 0;
+    background-color: #fff;
+    align-items: center;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.taskk{
+    display: grid;
+    grid-template-columns: 0.8fr 4fr 1fr;
+    grid-gap: 2rem;
+    /* margin: 2rem 0; */
+    align-items: center;
+    padding: 10px;
+    
+}
+.task2{
+    border-radius: 15px;
+    background-color: #fff;
+
+}
+
+.task-day{
+    font-size: 11px;
+    font-weight: 200;
+}
+
+
+.task-item {
+    overflow-y: hidden;
+    transition: all 0.8s ease-in;
+    max-height: 70px;
+    padding-top: 1px;
+  }
+  
+  .expanded {
+    max-height: 530px; /* Adjust this value to the desired expanded height */
+  }
+  
+  .task-title {
+    cursor: pointer;
+    background-color: lightgray;
+    padding: 10px;
+  }
+  
+  .task-details {
+    padding: 10px;
+    border: 1px solid lightgray;
+    background-color: white;
+  }
+  
+
+  .transitSearch{
+    transition: all 0.8s ease-in-out;
+  }
+  .calendarNav{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    align-items: center;
+    
+  }
