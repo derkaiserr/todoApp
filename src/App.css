@@ -6,11 +6,11 @@
     flex-direction: row;
     position: fixed;
     bottom: 0;
-    padding: 1.5rem 2rem;
-    font-size: 25px;
+    padding: 0.7rem 2rem;
+    font-size: 20px;
     justify-content: space-between;
     align-items: center;
-    gap: 27.5vw;
+    /* gap: 27.5vw; */
     width: 100vw;
     background-color: #c0c5c4;
 

@@ -97,7 +97,6 @@ export default function Newtask({setFormDataArray, setSavedNav}){
         // Example usage:
         const formattedDate = formatDate(date);
         
-        console.log(formattedDate); // Output: "26-10-2023"
         
 
     return(

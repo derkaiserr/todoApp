@@ -87,7 +87,6 @@ export default function App(){
     { to: '/pagetwo', iconClass: 'fa-regular fa-calendar' },
   ];
 
-  console.log(savedNav)
 
     
     return(
@@ -113,7 +112,7 @@ export default function App(){
       className={`linkk }`}
       to={link.to}
     >
-      <i onClick={() => clickNav(link)} className={`fa-sharp  ${link.to === savedNav ? "bg-[#656e6e] rounded-[15px] p-4" : ''}  text-[#1a2824] z ${link.iconClass}`}></i>
+      <i onClick={() => clickNav(link)} className={`fa-sharp  ${link.to === savedNav ? "bg-[#656e6e] rounded-[15px] p-3" : ''}  text-[#1a2824] z ${link.iconClass}`}></i>
     </Link>
   ))}
 </div>

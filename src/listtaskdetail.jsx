@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 
 
-export default function ListTask({listTaskDetail, setListTaskDetail, closeDetail}){
+export default function ListTask({listTaskDetail, setListTaskDetail}){
     
 
 
@@ -33,17 +33,28 @@ export default function ListTask({listTaskDetail, setListTaskDetail, closeDetail
     
     }
     const divStyle =  "border-b border-[#29302e83] mb-2 "
-    // console.log('List detail name:', listTaskDetail.name, listTaskDetail.date, listTaskDetail);
     
 
-    console.log(closeDetail, setListTaskDetail, listTaskDetail)
+    const closeDetail = (e) => {
+        setListTaskDetail(null);
+    };
     
+    const handlePropagation = (e) => {
+        // Prevent the click event from propagating
+        e.stopPropagation();
+      }
+    
+      useEffect(() => {
+        // This effect will run whenever listTaskDetail changes
+        // You can perform any actions here that depend on the updated state
+        console.log('listTaskDetail changed:', listTaskDetail);
+      }, [listTaskDetail]);
 
     return(
         <>
-        {(listTaskDetail) && (<div style={style}  className=" relative bg-slate-100">
+        {listTaskDetail && (<div style={style} onClick={handlePropagation}  className=" z-20 relative bg-slate-100">
             
-        <i onClick={closeDetail}  className=" cursor-pointer fa-solid flex flex-row-reverse m-2 mt-[2rem] text-[1.5rem] fa-xmark"></i>
+        <i onClick={closeDetail}   className=" cursor-pointer fa-solid flex flex-row-reverse m-2 mt-[2rem] text-[1.5rem] fa-xmark"></i>
                <div className={divStyle}> Name <br/>
                  <p style={deets}>{listTaskDetail.name}</p></div>
                  <div className={divStyle}>Date <br />

@@ -66,18 +66,29 @@ const eventsForSelectedDate = formData.filter((event) =>
         
       setSearchResults(filteredResults);
       setSearch(true)
+      console.log(listTaskDetail)
     };
 
-  const handleListOption = (result) => {
-    setIsSearchInitiated(false)
-    setListTaskDetail(result)
-    // handleChange()
-  }
-  
+    const handleListOption = (result) => {
+      console.log('Handling list option:', result);
+      setIsSearchInitiated(false);
+      setListTaskDetail(result);
+      setSearch(true); // Set search to true to display the list task detail
+      setSearchQuery('');
+      handleChange(result.name);
+      // setIsSearchInitiated(true)
+    };
+    
+    const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        handleSearch();
+      }
+    };
+    
 
-  function handleChange (e){
-    setSearchQuery(e.target.value)
-    handleSearch()
+  function handleChange (value){
+    setSearchQuery(value)
+
   }
 
   const closeDetail = () => {
@@ -90,21 +101,27 @@ const eventsForSelectedDate = formData.filter((event) =>
   }, [listTaskDetail]);
 
 
+  const searchListClick = () => {
+    setSearch(search ? !search : search)
+    setSearchQuery("")
+    
+  }
+
     return (
         <div onClick={() => {}} className="w-full   bg-[#c0c5c46e]  p-10 pb-[10rem]">
 
           <div className="calendarNav ">
         <i onClick={back} className="fa-regular fa-arrow-left"></i>
         <div className={`flex flex-row-reverse absolute right-10 -mt-2  transitSearch  gap-[1rem] ${!search ? " " : ""} items-center` }>
-
-        <i onClick={handleSearch} className="fa-regular p-2 relative fa-magnifying-glass"></i>
-        <input type="text" name="search" id="search" value={searchQuery}
-        onChange={handleChange} className={`transitSearch outline-none border border-[#1a2824]/[0.3] ${search ? "w-[15.8rem] visible":" w-0"}   `} />
+      <label htmlFor="search">    
+        <i onClick={handleSearch} htmlFor='search' className="fa-regular p-2 relative fa-magnifying-glass"></i></label>
+        <input type="text"  onKeyDown={handleKeyPress} name="search" id="search" value={searchQuery}
+        onChange={(e) => handleChange(e.target.value)} className={`transitSearch outline-none border border-[#1a2824]/[0.3] ${search ? "w-[15.8rem] visible":" w-0"}   `} />
         </div>
         </div>
-      <div onClick={() => {setSearch(search ? !search : search)}}>
+      <div onClick={searchListClick}>
 
-      {(isSearchInitiated && searchQuery != '') &&  <ul className="absolute top-[3.7653rem] py-3 leading-[2.6rem] ml-10 w-[15rem] bg-white rounded-b-md">
+      {(isSearchInitiated ) &&  <ul className="absolute top-[3.7653rem] py-3 leading-[2.6rem] ml-10 w-[15rem] bg-white rounded-b-md">
         {searchResults.map((result, index) => (
           <li onClick={() =>        
             handleListOption(result)} className="pl-2 border-t-2" key={index}>{result.name}
@@ -119,7 +136,6 @@ const eventsForSelectedDate = formData.filter((event) =>
       
 
       
-      <p onClick={closeDetail} className="cursor-pointer" > console</p>
 
 
           <button onClick={() => {navigate("../NewTask")
@@ -127,18 +143,7 @@ const eventsForSelectedDate = formData.filter((event) =>
 
         <div className="days flex flex-row mt-10 gap-3 items-center justify-center">
 
-{/*        
-     
-       {buttons.map((button) => (
-        <button
-          key={button.id}
-          onClick={() => handleButtonClick(button.id)}
-          className={ `selected  flex flex-col justify-center justify-items-center p-3 rounded-3xl gap-2 items-center ${selectedButton === button.id ? 'bg-[#1a2824] text-white':'bg-white text-[#1a2824]'}` }
-        >
-          <span>{button.label}</span>
-          <span>{button.content}</span>
-        </button>
-      ))} */}
+
     
     <Calendar className={'mb-[2rem]'}
       value={selectedDate}
