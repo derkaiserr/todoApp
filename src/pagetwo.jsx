@@ -71,12 +71,11 @@ const eventsForSelectedDate = formData.filter((event) =>
 
     const handleListOption = (result) => {
       console.log('Handling list option:', result);
-      setIsSearchInitiated(false);
       setListTaskDetail(result);
       setSearch(true); // Set search to true to display the list task detail
       setSearchQuery('');
       handleChange(result.name);
-      // setIsSearchInitiated(true)
+      setIsSearchInitiated(true)
     };
     
     const handleKeyPress = (e) => {
