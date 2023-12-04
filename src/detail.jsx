@@ -31,30 +31,41 @@ export default function Detail ({event, toggleDetail, setToggleDetail, listDetai
     
     }
     const divStyle =  "border-b border-[#29302e83] mb-2 "
-  
+    const handlePropagation = (e) => {
+        // Prevent the click event from propagating
+        e.stopPropagation();
+      }
     
 
 
     return(
         <>
-        {(toggleDetail || listDetail) && (<div style={style} onClick={() => {setToggleDetail(true)}}  className=" relative bg-slate-100">
+        {(toggleDetail ) && (<div style={style} onClick={(e) => {
+            setToggleDetail(true)
+            // handlePropagation(e)
+            }}  className=" relative bg-slate-100">
             
-        <i className="fa-solid flex flex-row-reverse m-2 mt-[2rem] text-[1.5rem] fa-xmark"></i>
+        <i onClick={(e) => {
+            setToggleDetail(false)
+            handlePropagation(e)
+        }
+        
+        } className="fa-solid flex flex-row-reverse m-2 mt-[2rem] text-[1.5rem] fa-xmark"></i>
                <div className={divStyle}> Name <br/>
-                 <p style={deets}>{(event && event.name) || (listDetail && listDetail.name)}</p></div>
+                 <p style={deets}>{(event && event.name) }</p></div>
                  <div className={divStyle}>Date <br />
-                <p style={deets}>{(event && event.date) || (listDetail && listDetail.date)}</p>
+                <p style={deets}>{(event && event.date) }</p>
                  </div>
                  <div className={divStyle}> Start Time <br />
-                <p style={deets}>{(event && event.startTime) || (listDetail && listDetail.startTime)}</p>
+                <p style={deets}>{(event && event.startTime) }</p>
                  </div>
                  <div className={divStyle}>End Time <br />
-                <p style={deets} >{(event && event.endTime) || (listDetail && listDetail.endTime)}</p>
+                <p style={deets} >{(event && event.endTime) }</p>
                  </div>
                  <div >
 
                 <label htmlFor="descript">Description</label>
-                <p style={deets} id="descript">{(event && event.description) || (listDetail && listDetail.description)}</p>
+                <p style={deets} id="descript">{(event && event.description) }</p>
                  </div>
               </div>)}
         </>

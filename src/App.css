@@ -13,10 +13,26 @@
     /* gap: 27.5vw; */
     width: 100vw;
     background-color: #c0c5c4;
+    /* transform: scale(0.9); */
 
 }
+@keyframes example {
+    0% {
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 
+.menu-bar{
+    /* transition: all 0.2s ease; */
 
-
+    animation-name: example;
+    animation-duration: 1s;
+}
 
 

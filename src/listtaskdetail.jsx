@@ -9,30 +9,31 @@ export default function ListTask({listTaskDetail, setListTaskDetail}){
     const style={
         // height: "80vh",
         width: " 80vw",
-        position: "absolute",
-        top: "5vh",
+        position: "fixed",
+        top: "10vh",
         left: "10vw",
         zIndex: "5",
         display: "flex",
         alignItems: "",
         padding: "0 2rem 1rem",
         flexDirection: "column",
-        overflow: "hidden"
+        overflow: "hidden",
+        // transform: "scale(1)"
 
     }
     const deets = {
         height: "",
-        margin: "0.4rem auto 1rem",
+        margin: "0rem auto 0.5rem",
         backgroundColor: "#1a2824",
         alignItems: "center",
-        padding: "10px",
+        padding: "0px",
         borderRadius: "15px",
         width: "80%",
         color: "#FFFFFF",
         textAlign: "center",
     
     }
-    const divStyle =  "border-b border-[#29302e83] mb-2 "
+    const divStyle =  "border-b border-[#29302e83] mb-1 pb-1 "
     
 
     const closeDetail = (e) => {

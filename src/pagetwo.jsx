@@ -112,7 +112,7 @@ const eventsForSelectedDate = formData.filter((event) =>
           <div className="calendarNav ">
         <i onClick={back} className="fa-regular fa-arrow-left"></i>
         <div className={`flex flex-row-reverse absolute right-10 -mt-2  transitSearch  gap-[1rem] ${!search ? " " : ""} items-center` }>
-      <label htmlFor="search">    
+      <label htmlFor="search"> 
         <i onClick={handleSearch} htmlFor='search' className="fa-regular p-2 relative fa-magnifying-glass"></i></label>
         <input type="text"  onKeyDown={handleKeyPress} name="search" id="search" value={searchQuery}
         onChange={(e) => handleChange(e.target.value)} className={`transitSearch outline-none border border-[#1a2824]/[0.3] ${search ? "w-[15.8rem] visible":" w-0"}   `} />
@@ -120,15 +120,16 @@ const eventsForSelectedDate = formData.filter((event) =>
         </div>
       <div onClick={searchListClick}>
 
-      {(isSearchInitiated ) &&  <ul className="absolute top-[3.7653rem] py-3 leading-[2.6rem] ml-10 w-[15rem] bg-white rounded-b-md">
-        {searchResults.map((result, index) => (
+      {(isSearchInitiated ) &&  <ul className="absolute top-[3.7653rem] leading-[2.6rem] ml-10 w-[15rem] bg-white rounded-b-md">
+        {searchResults.map((result, index) => (<div> {(searchQuery != "") &&
           <li onClick={() =>        
             handleListOption(result)} className="pl-2 border-t-2" key={index}>{result.name}
          {(listTaskDetail === result) && <div className="absolute">
-      <ListTask listTaskDetail={listTaskDetail} closeDetail={closeDetail}  setListTaskDetail={setListTaskDetail} />
-      <div className={listTaskDetail ? "absolute w-[100vw] h-[102vh] z-[2] bg-[#1a2824]/75 top-0 left-0 -ml-10" : "none"}></div>
       </div>}
-          </li> 
+          </li> }
+      <ListTask listTaskDetail={listTaskDetail} closeDetail={closeDetail}  setListTaskDetail={setListTaskDetail} />
+      <div className={listTaskDetail ? " w-[100vw] h-[102vh] z-[2] bg-[#1a2824]/50 -top-20 left-10 fixed -ml-10" : "none"}></div>
+          </div>
           
         ))}
       </ul>}

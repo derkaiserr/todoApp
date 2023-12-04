@@ -13,8 +13,8 @@ export default function App(){
   
   const [formDataArray, setFormDataArray] = useState([{
     id: 1,  
-    name: "Take out the trash",
-    date: "10/11/2023",
+    name: "Take out",
+    date: "01/12/2023",
       startTime: "12:00",
       endTime: "13:00",
       description: "Take out the trash",
@@ -23,7 +23,7 @@ export default function App(){
     {
       id: 2,  
       name: "Go to school",
-      date: "10/11/2023",
+      date: "30/11/2023",
       startTime: "08:00",
       endTime: "08:30",
       description: "It's a new day, time to go to school",
@@ -32,7 +32,7 @@ export default function App(){
     {
       id: 3,  
       name: "Get it done",
-      date: "10/10/2023",
+      date: "30/11/2023",
       startTime: "12:00",
       endTime: "13:00",
       description: "Take out the bin",
@@ -93,7 +93,7 @@ export default function App(){
       <>
 
 <Routes>
-        <Route path="/"   element={<Home formData={formDataArray} setSavedNav={setSavedNav}/>} />
+        <Route path="/"   element={<Home formData={formDataArray} setFormData={setFormDataArray} setSavedNav={setSavedNav}/>} />
         <Route path="pagetwo" element={<Calendarr formData={formDataArray} setSavedNav={setSavedNav} setFormData={setFormDataArray} />} />
         <Route path="NewTask"    element={<Newtask setFormDataArray={setFormDataArray} setSavedNav={setSavedNav}/>} />
     
@@ -102,14 +102,14 @@ export default function App(){
 
     
 
-// ...
+
 
 <div className="mobileNav z-30">
   {navLinks.map((link, index) => (
     <Link
       key={index}
       
-      className={`linkk }`}
+      className={`linkk`}
       to={link.to}
     >
       <i onClick={() => clickNav(link)} className={`fa-sharp  ${link.to === savedNav ? "bg-[#656e6e] rounded-[15px] p-3" : ''}  text-[#1a2824] z ${link.iconClass}`}></i>
