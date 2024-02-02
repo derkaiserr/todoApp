@@ -68,6 +68,58 @@ export default function Home({formData, setFormData}){
     const homeTasks = formData.filter((event) =>
     new Date(event.date) > new Date()
     )
+
+
+
+    const [inputDate, setInputDate] = useState('');
+    const [result, setResult] = useState('');
+  
+    const handleDateChange = (event) => {
+      setInputDate(event.target.value);
+    };
+  
+    const compareDates = () => {
+      const inputDateTime = new Date(inputDate).setHours(0, 0, 0, 0);
+      const todayDateTime = new Date().setHours(0, 0, 0, 0);
+  
+
+      if (inputDateTime < todayDateTime) {
+        setResult('The input date is before today.');
+      } else if (inputDateTime > todayDateTime) {
+        setResult('The input date is after today.');
+      } else {
+        setResult('The input date is today.');
+      }
+      // console.log(todayDateTime)
+    };
+
+    const inProgress = formData.filter((event) => { 
+      // Assuming event.date is in the format "DD/MM/YYYY"
+      const [day, month, year] = event.date.split('/').map(Number);
+      const inputDateTime = new Date(year, month - 1, day); // Month is 0-based in JavaScript
+      const todayDateTime = new Date();
+    
+      // Set the time to the beginning of the day for accurate date comparison
+      inputDateTime.setHours(0, 0, 0, 0);
+      todayDateTime.setHours(0, 0, 0, 0);
+      return inputDateTime >= todayDateTime
+    })
+
+    const completedTask = formData.filter((event) => { 
+      // Assuming event.date is in the format "DD/MM/YYYY"
+      const [day, month, year] = event.date.split('/').map(Number);
+      const inputDateTime = new Date(year, month - 1, day); // Month is 0-based in JavaScript
+      const todayDateTime = new Date();
+    
+      // Set the time to the beginning of the day for accurate date comparison
+      inputDateTime.setHours(0, 0, 0, 0);
+      todayDateTime.setHours(0, 0, 0, 0);
+    
+      return inputDateTime < todayDateTime;
+    });
+    
+console.log(completedTask)
+    
    
  
     return(
@@ -82,6 +134,9 @@ export default function Home({formData, setFormData}){
 
     <p className="">Good day, User</p>
     <p>Have a nice day</p>
+    <input type="date" value={inputDate} onChange={handleDateChange} />
+    <button onClick={compareDates}>Compare Dates</button>
+      <p>{result}</p>
           </div>
     <div className="buttonz">
       {buttonDem.map((button, index) => {return(
@@ -105,7 +160,7 @@ export default function Home({formData, setFormData}){
   }
 
   {(holdButton === "three") &&
-    formData.map((event, index) => (
+    completedTask.map((event, index) => (
       <div key={index} className="tile tile-one">
         <div className="tileHead">
           <img src={tileLogo} alt="" />
@@ -116,6 +171,20 @@ export default function Home({formData, setFormData}){
       </div>
     ))
   }
+  {(holdButton === "two") &&
+    inProgress.map((event, index) => (
+      <div key={index} className="tile tile-one">
+        <div className="tileHead">
+          <img src={tileLogo} alt="" />
+          <p>{event.name}</p>
+        </div>
+        <p>{event.description}</p>
+        <p className="date">{event.date}</p>
+      </div>
+    ))
+  }
+
+
 </div>
 
 

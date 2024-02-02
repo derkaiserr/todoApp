@@ -32,7 +32,7 @@ export default function App(){
     {
       id: 3,  
       name: "Get it done",
-      date: "30/11/2023",
+      date: "02/02/2024",
       startTime: "12:00",
       endTime: "13:00",
       description: "Take out the bin",

@@ -51,7 +51,7 @@
 .tiles{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content:flex-start;
     overflow-x: scroll;
     gap: 3rem;
     /* padding:  0 2r; */
