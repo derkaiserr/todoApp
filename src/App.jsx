@@ -10,7 +10,7 @@ import OptionKey from "./optionkey";
 export default function App(){
 
 
-  
+  const [complete, setComplete] = React.useState('');
   const [formDataArray, setFormDataArray] = useState([{
     id: 1,  
     name: "Take out",
@@ -18,7 +18,8 @@ export default function App(){
       startTime: "12:00",
       endTime: "13:00",
       description: "Take out the trash",
-      category: "Testing"
+      category: "Testing",
+      completed: true
     },
     {
       id: 2,  
@@ -27,7 +28,8 @@ export default function App(){
       startTime: "08:00",
       endTime: "08:30",
       description: "It's a new day, time to go to school",
-      category: "Testing"
+      category: "Testing",
+      completed:true,
     },
     {
       id: 3,  
@@ -36,7 +38,8 @@ export default function App(){
       startTime: "12:00",
       endTime: "13:00",
       description: "Take out the bin",
-      category: "Testing"
+      category: "Testing",
+      completed: false
     },
     {
       id: 4,   
@@ -45,8 +48,8 @@ export default function App(){
       startTime: "12:00",
       endTime: "13:00",
       description: "Take out the trash",
-      category: "Testing"
-    }])
+      category: "Testing",
+      completed: true    }])
 
 
     let saveLocation = window.location.pathname;
@@ -88,14 +91,38 @@ export default function App(){
   ];
 
 
+  const [completedEvents, setCompletedEvents] = useState([]);
+  const markAsCompleted = (eventId) => {
+    // Find the event in the list of all events
+    const eventToUpdate = formDataArray.find((event) => event.id === eventId);
+
+    // Update the completed status
+    if (eventToUpdate) {
+      eventToUpdate.completed = true;
+
+      // Move the event to the completed events list
+      setCompletedEvents((prevCompletedEvents) => [
+        ...prevCompletedEvents,
+        eventToUpdate,
+      ]);
+
+      // Update the state of all events
+      setFormDataArray((prevAllEvents) =>
+        prevAllEvents.map((event) =>
+          event.id === eventId ? { ...event, completed: true } : event
+        )
+      );
+    }}
+  
+
     
     return(
       <>
 
 <Routes>
-        <Route path="/"   element={<Home formData={formDataArray} setFormData={setFormDataArray} setSavedNav={setSavedNav}/>} />
+        <Route path="/"   element={<Home formData={formDataArray} markAsCompleted={markAsCompleted} setComplete={setComplete} setFormData={setFormDataArray} setSavedNav={setSavedNav}/>} />
         <Route path="pagetwo" element={<Calendarr formData={formDataArray} setSavedNav={setSavedNav} setFormData={setFormDataArray} />} />
-        <Route path="NewTask"    element={<Newtask setFormDataArray={setFormDataArray} setSavedNav={setSavedNav}/>} />
+        <Route path="NewTask"    element={<Newtask setFormDataArray={setFormDataArray} complete={complete} setSavedNav={setSavedNav}/>} />
     
       </Routes>
     

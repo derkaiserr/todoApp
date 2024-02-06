@@ -5,7 +5,7 @@ import "./NewTask.css"
 
 
 
-export default function Newtask({setFormDataArray, setSavedNav}){
+export default function Newtask({setFormDataArray, setSavedNav, complete}){
 
     const navigate = useNavigate()
 
@@ -35,6 +35,7 @@ export default function Newtask({setFormDataArray, setSavedNav}){
         const [date, setDate] = React.useState('');
         const [description, setDescription] = React.useState('');
         const [submittedValue, setSubmittedValue] = React.useState('');
+       
         const handleInputChange = (event) => {
             // Update the state with the value of the input field
             setNameInput(event.target.value);
@@ -64,7 +65,7 @@ export default function Newtask({setFormDataArray, setSavedNav}){
             navigate("/") 
           setSavedNav("/");
 
-            setFormDataArray((prev) => [...prev, {name: nameInput, startTime: startTime, endTime: endTime, date:formattedDate, description:description, category: selectedOption}])
+            setFormDataArray((prev) => [...prev, {name: nameInput, startTime: startTime, endTime: endTime, date:formattedDate, description:description, category: selectedOption, completed: false}])
           }
         }
 

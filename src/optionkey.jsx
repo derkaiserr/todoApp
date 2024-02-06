@@ -5,11 +5,12 @@ import Detail from "./detail";
 
 
 
-export default function optionKey ({setToggleDetails, formData, setFormData,  event, index }){
+export default function optionKey ({setToggleDetails, formData, setFormData,  event, index, setComplete, markAsCompleted }){
     
   const [optionsKey, setOptionsKey] = useState(false)
   const [toggleDelete, setToggleDelete] = useState(false)
   const [toggleDetail, setToggleDetail] = useState(false)
+  // const [completed, setCompleted] = useState(false)
   const closeMenu = () => {
 
 
@@ -68,7 +69,21 @@ export default function optionKey ({setToggleDetails, formData, setFormData,  ev
     setOptionsKey(false)
   }
 
+
+  const handleComplete = () => {
+    // setCompleted(prev => !prev)
+    setComplete(true)
+        
+  }
+  const handleMarkAsCompleted = () => {
+    markAsCompleted(event.id);
+  };
+
+
   
+
+
+
 
    
 
@@ -78,8 +93,8 @@ export default function optionKey ({setToggleDetails, formData, setFormData,  ev
         
               <div onClick={handlePropagation}  className= {`absolute mt-4 ${ optionsKey ? "scale-100 " : "scale-0 "} ease-linear transition duration-100   leading-10 border-solid border border-[#1a2824] rounded right-[5rem] w-[9rem] text-center bg-white` }>
                 <p onClick={handleDetail} ref={dropdownReff} className="cursor-pointer hover:bg-slate-200 hover:rounded-t transition-all duration-150 ease-in">Details</p>
-                <p onClick={handleDelete} className=" cursor-pointer hover:bg-slate-200 transition-all duration-150 ease-in-out hover:rounded-b text-red-700">Delete</p>
-                <p>Mark as completed</p>
+                <p onClick={handleDelete} className=" cursor-pointer hover:bg-slate-200 transition-all duration-150 ease-in-out text-red-700">Delete</p>
+                <p  onClick={handleMarkAsCompleted}  className="cursor-pointer hover:bg-slate-200 transition-all duration-150 ease-in-out hover:rounded-b ">Mark as completed</p>
               </div>
               
               <Detail  event={event} toggleDetail={toggleDetail} setToggleDetail={setToggleDetail} index={index}  />

@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from "react";
 import tileLogo from "./Images/tileLogo.svg"
 import Menulist from "./homemenu";
-import Optioncom from "./optionkey";
+import OptionKey from "./optionkey";
 
 import "./Home.css"
 
 import {Link} from "react-router-dom"
 
-export default function Home({formData, setFormData}){
+export default function Home({formData, setFormData, markAsCompleted, setComplete}){
 
     const myStyle = {
         margin: "2rem 2rem 15rem"
@@ -59,6 +59,7 @@ export default function Home({formData, setFormData}){
   
   const eventsForSelectedDate = formData.filter((event) =>
       event.date === formattedDate
+    
     );
 
     const completedTasks = formData.filter((event) =>
@@ -95,31 +96,27 @@ export default function Home({formData, setFormData}){
 
     const inProgress = formData.filter((event) => { 
       // Assuming event.date is in the format "DD/MM/YYYY"
-      const [day, month, year] = event.date.split('/').map(Number);
-      const inputDateTime = new Date(year, month - 1, day); // Month is 0-based in JavaScript
-      const todayDateTime = new Date();
+      // const [day, month, year] = event.date.split('/').map(Number);
+      // const inputDateTime = new Date(year, month - 1, day); // Month is 0-based in JavaScript
+      // const todayDateTime = new Date();
     
-      // Set the time to the beginning of the day for accurate date comparison
-      inputDateTime.setHours(0, 0, 0, 0);
-      todayDateTime.setHours(0, 0, 0, 0);
-      return inputDateTime >= todayDateTime
+      // // Set the time to the beginning of the day for accurate date comparison
+      // inputDateTime.setHours(0, 0, 0, 0);
+      // todayDateTime.setHours(0, 0, 0, 0);
+      // return inputDateTime >= todayDateTime
+
+
+       return event.completed === false
     })
 
-    const completedTask = formData.filter((event) => { 
-      // Assuming event.date is in the format "DD/MM/YYYY"
-      const [day, month, year] = event.date.split('/').map(Number);
-      const inputDateTime = new Date(year, month - 1, day); // Month is 0-based in JavaScript
-      const todayDateTime = new Date();
-    
-      // Set the time to the beginning of the day for accurate date comparison
-      inputDateTime.setHours(0, 0, 0, 0);
-      todayDateTime.setHours(0, 0, 0, 0);
-    
-      return inputDateTime < todayDateTime;
-    });
+    const completedTask = formData.filter((event) => event.completed === true
+    );
     
 console.log(completedTask)
-    
+console.log(inProgress)
+console.log(formData)
+
+// console.log(formData.map((event) => event.progress))
    
  
     return(
@@ -134,9 +131,7 @@ console.log(completedTask)
 
     <p className="">Good day, User</p>
     <p>Have a nice day</p>
-    <input type="date" value={inputDate} onChange={handleDateChange} />
-    <button onClick={compareDates}>Compare Dates</button>
-      <p>{result}</p>
+    
           </div>
     <div className="buttonz">
       {buttonDem.map((button, index) => {return(
@@ -146,7 +141,8 @@ console.log(completedTask)
     </div>
 
     <div className="tiles">
-  {(holdButton === "one") &&
+  {(holdButton === "one") &&(
+    eventsForSelectedDate !== 0 ? (
     eventsForSelectedDate.map((event, index) => (
       <div key={index} className="tile tile-one">
         <div className="tileHead">
@@ -155,12 +151,14 @@ console.log(completedTask)
         </div>
         <p>{event.description}</p>
         <p className="date">{event.date}</p>
+        
       </div>
-    ))
+    ))) :   <p className="p-4 text-[#263a35] text-[1.4rem] ">No Available Tasks!</p>)
   }
 
-  {(holdButton === "three") &&
-    completedTask.map((event, index) => (
+  {(holdButton === "three") &&(
+    completedTask !== 0 ? (
+         completedTask.map((event, index) => (
       <div key={index} className="tile tile-one">
         <div className="tileHead">
           <img src={tileLogo} alt="" />
@@ -169,9 +167,10 @@ console.log(completedTask)
         <p>{event.description}</p>
         <p className="date">{event.date}</p>
       </div>
-    ))
+    ))) :   <p className="p-4 text-[#263a35] text-[1.4rem] ">No Available Tasks!</p>)
   }
-  {(holdButton === "two") &&
+  {(holdButton === "two") && (
+    inProgress.length !== 0 ? (
     inProgress.map((event, index) => (
       <div key={index} className="tile tile-one">
         <div className="tileHead">
@@ -181,7 +180,7 @@ console.log(completedTask)
         <p>{event.description}</p>
         <p className="date">{event.date}</p>
       </div>
-    ))
+    ))) :  (<p className="p-4 text-[#263a35] text-[1.4rem] ">No Available Tasks!</p>))
   }
 
 
@@ -193,27 +192,31 @@ console.log(completedTask)
     <div className="flex flex-col-reverse ">
 
       {
-       homeTasks.length === 0 ? (
-          <p className="p-4 text-[#263a35] text-[1.4rem] ">No Available Tasks!</p>
-          ) :      homeTasks.map((task, index) => {
+      //  homeTasks.length === 0 ? (
+      //     <p className="p-4 text-[#263a35] text-[1.4rem] ">No Available Tasks!</p>
+      //     ) :    
+
+      formData.length > 0 ? (
+            formData.map((task, index) => {
         
         return (
           
           <div key={index} className="  tasks">
             {task.name  &&
 
-            <div className="task task1">
+            <div className="task relative task1">
+             {task.completed === true && <div className="absolute bg-[#1a2824] right-[6rem] text-white text-[11px] shadow-xl px-2 py-[2px] rounded-b top-0 ">Completed</div>}
       <i className="fa-sharp fa-regular fa-calendar-days"></i>
             <div className="task-description">
               <p className="taskName">{task.name}</p>
             </div>
-      <Optioncom setToggleDetails={setToggleDetails} toggleDetails={toggleDetails} setFormData={setFormData} formData={formData} event={task} />
+      <OptionKey setToggleDetails={setToggleDetails} markAsCompleted={markAsCompleted} setComplete={setComplete} toggleDetails={toggleDetails} setFormData={setFormData} formData={formData} event={task} />
             
           </div>
             }
           </div>
         );
-      })}
+      })) :   <p className="p-4 text-[#263a35] text-[1.4rem] ">No Available Tasks!</p>}
 
       </div>
     
