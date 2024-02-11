@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import tileLogo from "./Images/tileLogo.svg"
 import Menulist from "./homemenu";
 import OptionKey from "./optionkey";
+import EventTile from "./EventTile";
 
 import "./Home.css"
 
@@ -58,7 +59,7 @@ export default function Home({formData, setFormData, markAsCompleted, setComplet
   const formattedDate = formatDate(todaysDate);
   
   const eventsForSelectedDate = formData.filter((event) =>
-      event.date === formattedDate
+      ((event.date === formattedDate) && (event.completed === false))
     
     );
 
@@ -120,14 +121,16 @@ console.log(formData)
    
  
     return(
-        <div style={myStyle}>
+        <div className={moveBars ? "overflow-hidden" : "overflow"} style={myStyle}>
           <div className="first-icons">
 
-        <i onClick={() => setMoveBars(true)} className={` ${moveBars ? "menu-bar" : "" } fa-solid fa-bars-staggered`}></i>
-   <i className="fa-solid user-icon fa-user"></i>
+        <i onClick={() => setMoveBars(true)} className={` ${moveBars ? "menu-bar" : "" } fa-solid p-[0.2rem] fa-bars-staggered`}></i>
+   {/* <i className="fa-solid user-icon fa-user"></i> */}
           </div>
-          {/* <Menulist /> */}
+         {<Menulist moveBars={moveBars} setMoveBars={setMoveBars}/>}
           <div className="welcome">
+
+
 
     <p className="">Good day, User</p>
     <p>Have a nice day</p>
@@ -142,44 +145,22 @@ console.log(formData)
 
     <div className="tiles">
   {(holdButton === "one") &&(
-    eventsForSelectedDate !== 0 ? (
+    eventsForSelectedDate != 0 ? (
     eventsForSelectedDate.map((event, index) => (
-      <div key={index} className="tile tile-one">
-        <div className="tileHead">
-          <img src={tileLogo} alt="" />
-          <p>{event.name}</p>
-        </div>
-        <p>{event.description}</p>
-        <p className="date">{event.date}</p>
-        
-      </div>
+      <EventTile event={event} key={index} />
     ))) :   <p className="p-4 text-[#263a35] text-[1.4rem] ">No Available Tasks!</p>)
   }
 
   {(holdButton === "three") &&(
     completedTask !== 0 ? (
          completedTask.map((event, index) => (
-      <div key={index} className="tile tile-one">
-        <div className="tileHead">
-          <img src={tileLogo} alt="" />
-          <p>{event.name}</p>
-        </div>
-        <p>{event.description}</p>
-        <p className="date">{event.date}</p>
-      </div>
+     <EventTile event={event} key={index} />
     ))) :   <p className="p-4 text-[#263a35] text-[1.4rem] ">No Available Tasks!</p>)
   }
   {(holdButton === "two") && (
     inProgress.length !== 0 ? (
     inProgress.map((event, index) => (
-      <div key={index} className="tile tile-one">
-        <div className="tileHead">
-          <img src={tileLogo} alt="" />
-          <p>{event.name}</p>
-        </div>
-        <p>{event.description}</p>
-        <p className="date">{event.date}</p>
-      </div>
+      <EventTile event={event} key={index} />
     ))) :  (<p className="p-4 text-[#263a35] text-[1.4rem] ">No Available Tasks!</p>))
   }
 
@@ -205,7 +186,7 @@ console.log(formData)
             {task.name  &&
 
             <div className="task relative task1">
-             {task.completed === true && <div className="absolute bg-[#1a2824] right-[6rem] text-white text-[11px] shadow-xl px-2 py-[2px] rounded-b top-0 ">Completed</div>}
+             {task.completed === true && <div className="absolute bg-[#1a2824]  ml-[17.56rem] rounded-se-[15px] text-white text-[11px] shadow-xl px-2 py-[4px] rounded-es top-0 ">Completed</div>}
       <i className="fa-sharp fa-regular fa-calendar-days"></i>
             <div className="task-description">
               <p className="taskName">{task.name}</p>

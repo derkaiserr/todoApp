@@ -13,10 +13,15 @@
     gap: 1rem;
     font-size: 14.5px;
     white-space: normal;
-    /* word-wrap: nowrap; */
     
 }
 
+.tileName, .tileDescribe{
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+}
 
 
 .buttonz{
@@ -26,7 +31,6 @@
 }
 .buttonz button{
     border: none;
-    /* background-color: #ffffff; */
     padding: 0.3rem 0.6rem;
     border-radius: 10px;
 }
@@ -34,7 +38,7 @@
 .tileHead{
     display: flex;
     white-space: normal;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
     
 }
@@ -42,11 +46,12 @@
 
 .date{
     font-size: 11px;
+    padding-top: 1.5rem;
 }
-/* .tile >  p :nth-child(1){
-    word-wrap: break-word;
-    /* font-size: 25px; */
 
+
+
+    
 
 .tiles{
     display: flex;
@@ -176,10 +181,9 @@
     position: fixed;
     top: 0;
     left: 0px; /* Off-screen initially */
-    width: 300px;
-    height: 100vh;
+   
     background-color: #333;
-    transition: right 0.3s ease-out;
+    transition: all 0.3s ease-out;
   }
   
   .slide-in-content {
@@ -188,5 +192,5 @@
   }
   
   .slide-in-container.open {
-    right: 100px; /* Slide in when open class is applied */
+    left: 0px; /* Slide in when open class is applied */
   }
