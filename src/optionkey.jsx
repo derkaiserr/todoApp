@@ -99,7 +99,7 @@ export default function optionKey ({setToggleDetails, formData, setFormData,  ev
               
               <Detail  event={event} toggleDetail={toggleDetail} setToggleDetail={setToggleDetail} index={index}  />
             
-              <div className={toggleDetail ? "absolute w-[100vw] h-[102vh] z-[2] bg-[#1a2824]/75 top-0 left-0" : "none"}></div>
+              <div className={toggleDetail ? "fixed w-[100vw] h-[102vh] z-[2] bg-[#1a2824]/75 top-0 left-0" : "none"}></div>
         </div>
 
     )

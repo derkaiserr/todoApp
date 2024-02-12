@@ -7,14 +7,14 @@ import useClickOutside from "../hooks/useClickOutside";
 
 export default function Menulist ({moveBars, setMoveBars}) {
     const [isOpen, setIsOpen] = useState(false);
-const handleTouch = (e) => {
+// const handleTouch = (e) => {
 
 
-    if(e.touches[0].clientX > window.innerWidth - 350){
-        setIsOpen(!isOpen);
-    }
+//     if(e.touches[0].clientX > window.innerWidth - 350){
+//         setIsOpen(!isOpen);
+//     }
 
-}
+// }
 
 
 const turnOff = () => {
@@ -24,7 +24,7 @@ const turnOff = () => {
 
 const [about, setAbout] = useState(false)
 
-const closeMenu = () => {
+const closeAbout = () => {
 
 
     setAbout(false);
@@ -32,7 +32,8 @@ const closeMenu = () => {
     
 };
 
-const dropdownRef = useClickOutside(closeMenu);
+
+const dropdownRef = useClickOutside(closeAbout);
 
 const toggleAbout = () => {
     setMoveBars(false)
@@ -47,7 +48,7 @@ const toggleAbout = () => {
             <p>About</p>
         </div>
         <AboutMe about={about} setAbout={setAbout} />
-        <div className={about ? "absolute w-[100vw] h-[102vh] z-[2] bg-[#1a2824]/75 top-0 left-0" : "none"}></div>
+        <div className={about ? "absolute w-[120vw] h-[102vh] z-[2] bg-[#1a2824]/75 top-0 left-[30vw]" : "none"}></div>
       </div>
     )
 }

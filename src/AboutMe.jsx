@@ -11,7 +11,7 @@ export default function AboutMe ({about, setAbout}) {
         // height: "80vh",
         width: " 80vw",
         position: "fixed",
-        top: "10vh",
+        top: "5vh",
         left: "10vw",
         zIndex: "5",
         display: "flex",
@@ -20,7 +20,7 @@ export default function AboutMe ({about, setAbout}) {
         flexDirection: "column",
         overflow: "hidden",
         display: "flex",
-        flexDirection: "column",
+    
         justifyContent: "space-around",
         // transform: "scale(1)"
 
@@ -30,14 +30,14 @@ export default function AboutMe ({about, setAbout}) {
         margin: "0rem auto 0.5rem",
         backgroundColor: "#1a2824",
         alignItems: "center",
-        padding: "5px 0",
+        padding: "20px 0",
         borderRadius: "15px",
-        width: "80%",
+        width: "90%",
         color: "#FFFFFF",
         textAlign: "center",
     
     }
-    const divStyle =  "border-b border-[#29302e83] mb-1 pb-1 "
+    const divStyle =  " border-[#29302e83] mb-1 pb-1 "
     
 
     const closeDetail = (e) => {
@@ -55,12 +55,8 @@ export default function AboutMe ({about, setAbout}) {
         <div className={divStyle}>
         <p style={deets}>Developer: Adeola Adebowale</p>
         </div>
-        <div className={divStyle}>
-        <p style={deets}>Twitter: @manyfacedG</p>
-        </div>
-        <div className={divStyle}>
-        <p style={deets}>Github: <a href=""></a> github.com/derkaiserr</p>
-        </div>
+        <a style={deets}  className='p-[4rem] w-[25rem]' target='_blank' href='https://twitter.com/ManyfacedG'>Twitter: @manyfacedG</a>
+         <a style={deets} target='_blank' href="https://github.com/derkaiserr">Github: derkaiserr</a>
     </div>
     )
 }

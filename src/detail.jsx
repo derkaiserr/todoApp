@@ -7,7 +7,7 @@ export default function Detail ({event, toggleDetail, setToggleDetail, listDetai
     const style={
         // height: "80vh",
         width: " 80vw",
-        position: "absolute",
+        position: "fixed",
         top: "5vh",
         left: "10vw",
         zIndex: "5",

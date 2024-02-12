@@ -3,6 +3,7 @@ import tileLogo from "./Images/tileLogo.svg"
 import Menulist from "./homemenu";
 import OptionKey from "./optionkey";
 import EventTile from "./EventTile";
+import useClickOutside from "../hooks/useClickOutside";
 
 import "./Home.css"
 
@@ -118,13 +119,16 @@ console.log(inProgress)
 console.log(formData)
 
 // console.log(formData.map((event) => event.progress))
-   
+const closeMenu = () => {
+  setMoveBars(false);
+}
+const dropdownReff = useClickOutside(closeMenu);
  
     return(
-        <div className={moveBars ? "overflow-hidden" : "overflow"} style={myStyle}>
+        <div  className={moveBars ? "overflow-hidden" : "overflow"} style={myStyle}>
           <div className="first-icons">
 
-        <i onClick={() => setMoveBars(true)} className={` ${moveBars ? "menu-bar" : "" } fa-solid p-[0.2rem] fa-bars-staggered`}></i>
+        <i ref={dropdownReff} onClick={() => setMoveBars(true)} className={` ${moveBars ? "menu-bar" : "" } fa-solid p-[0.2rem] fa-bars-staggered`}></i>
    {/* <i className="fa-solid user-icon fa-user"></i> */}
           </div>
          {<Menulist moveBars={moveBars} setMoveBars={setMoveBars}/>}
@@ -186,7 +190,7 @@ console.log(formData)
             {task.name  &&
 
             <div className="task relative task1">
-             {task.completed === true && <div className="absolute bg-[#1a2824]  ml-[17.56rem] rounded-se-[15px] text-white text-[11px] shadow-xl px-2 py-[4px] rounded-es top-0 ">Completed</div>}
+             {task.completed === true && <div className="absolute bg-[#1a2824]  right-[0] rounded-se-[15px] text-white text-[11px] shadow-xl px-2 py-[4px] rounded-es top-0 ">Completed</div>}
       <i className="fa-sharp fa-regular fa-calendar-days"></i>
             <div className="task-description">
               <p className="taskName">{task.name}</p>
