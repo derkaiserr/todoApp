@@ -121,7 +121,7 @@ export default function App(){
 
 <Routes>
         <Route path="/"   element={<Home formData={formDataArray} markAsCompleted={markAsCompleted} setComplete={setComplete} setFormData={setFormDataArray} setSavedNav={setSavedNav}/>} />
-        <Route path="pagetwo" element={<Calendarr formData={formDataArray} setSavedNav={setSavedNav} setFormData={setFormDataArray} />} />
+        <Route path="pagetwo" element={<Calendarr formData={formDataArray} markAsCompleted={markAsCompleted} setComplete={setComplete} setSavedNav={setSavedNav} setFormData={setFormDataArray} />} />
         <Route path="NewTask"    element={<Newtask setFormDataArray={setFormDataArray} complete={complete} setSavedNav={setSavedNav}/>} />
     
       </Routes>

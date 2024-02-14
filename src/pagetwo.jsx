@@ -10,7 +10,7 @@ import Newtask from "./NewTask";
 import ListTask from "./listtaskdetail";
 
 
-export default function Calendarr({formData, setFormData, setSavedNav}){
+export default function Calendarr({formData, setFormData, setSavedNav, markAsCompleted, setComplete}){
   const [selectedDate, setSelectedDate] = useState(new Date());
   
 
@@ -160,7 +160,7 @@ const eventsForSelectedDate = formData.filter((event) =>
         <div className="tasks">
           {eventsForSelectedDate.map((event, index) => (
             <div  key={index}>
-             <Tasks event={event}  formData={formData} setFormData={setFormData} index={index}/>
+             <Tasks event={event} markAsCompleted={markAsCompleted} setComplete={setComplete}  formData={formData} setFormData={setFormData} index={index}/>
               
               </div>
           ))}

@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useRef} from 'react';
 import DropDetail from './dropdowndetail';
-import Optioncom from "./optionkey";
+import OptionKey from "./optionkey";
 
 
-export default function Tasks ({event, formData, setFormData, index}){
+export default function Tasks ({event, formData, setFormData, index, markAsCompleted, setComplete}){
 
   
     const [toggleDetails, setToggleDetails] = useState(false)
@@ -46,6 +46,13 @@ export default function Tasks ({event, formData, setFormData, index}){
       //     }
       // // console.log(toggleDetails)
       // },[!toggleDetails] )
+
+      useEffect(() => {
+        if (toggleDetails) {
+          window.scrollTo({ bottom: 0, behavior: 'smooth' });
+        }
+      }, [!toggleDetails]);
+      
     
 
     return(
@@ -53,12 +60,16 @@ export default function Tasks ({event, formData, setFormData, index}){
          <div ref={taskRef} id='expand' onClick={handleToggle} className={`task-item ${toggleDetails ? "expanded" : ""} mb-4 task2`}>
             <div className={`taskk  ${toggleDetails ? "my-[1rem]" : ""}`}>
 
+              {/* {event.completed === true && <div className=" absolute top-0 right-0 bg-[#1a2824]   rounded-se-[15px] text-white text-[11px] shadow-xl px-2 py-[4px] rounded-es  ">Completed</div>} */}
               <i className="fa-sharp fa-regular fa-calendar-days"></i>
               <div className="task-description">
               <p className={`taskName ${toggleDetails && " bg-[#1a2824] items-center text-center p-[10px] rounded-[15px] text-white"}`}>{event.name}</p>
             </div>
 
-              <Optioncom formData={formData} setToggleDetails={setToggleDetails} setFormData={setFormData} event={event} index={index} />
+         <div>
+
+            <OptionKey setToggleDetails={setToggleDetails} markAsCompleted={markAsCompleted} setComplete={setComplete} toggleDetails={toggleDetails} setFormData={setFormData} formData={formData} event={event} />
+         </div>
               </div>
               <DropDetail  toggleDetails={toggleDetails} setToggleDetails={setToggleDetails}  event={event} />
               </div >
