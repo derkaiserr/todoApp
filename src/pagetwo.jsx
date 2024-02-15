@@ -66,8 +66,11 @@ const eventsForSelectedDate = formData.filter((event) =>
         
       setSearchResults(filteredResults);
       setSearch(true)
-      console.log(listTaskDetail)
+      
     };
+
+
+
 
     const handleListOption = (result) => {
       console.log('Handling list option:', result);
@@ -94,10 +97,10 @@ const eventsForSelectedDate = formData.filter((event) =>
     setListTaskDetail(null);
   };
 
-  useEffect(() => {
-    // This effect will run after listTaskDetail has been updated
-    console.log(listTaskDetail);
-  }, [listTaskDetail]);
+  // useEffect(() => {
+  //   // This effect will run after listTaskDetail has been updated
+  //   console.log(listTaskDetail);
+  // }, [listTaskDetail]);
 
 
   const searchListClick = () => {
@@ -106,15 +109,23 @@ const eventsForSelectedDate = formData.filter((event) =>
     
   }
 
+  console.log(searchQuery)
+
+
+  
+
     return (
         <div onClick={() => {}} className="w-full   bg-[#c0c5c46e]  p-10 pb-[10rem]">
 
           <div className="calendarNav ">
-        <i onClick={back} className="fa-regular fa-arrow-left"></i>
+        <i onClick={back} className="fa-solid fa-house"></i>
         <div className={`flex flex-row-reverse absolute right-10 -mt-2  transitSearch  gap-[1rem] ${!search ? " " : ""} items-center` }>
       <label htmlFor="search"> 
         <i onClick={handleSearch} htmlFor='search' className="fa-regular p-2 relative fa-magnifying-glass"></i></label>
-        <input type="text"  onKeyDown={handleKeyPress} name="search" id="search" value={searchQuery}
+        <input type="text"   onKeyDown={ () => {
+          handleKeyPress
+          handleSearch
+        }} name="search" id="search" value={searchQuery}
         onChange={(e) => handleChange(e.target.value)} className={`transitSearch outline-none border border-[#1a2824]/[0.3] ${search ? "w-[15.8rem] visible":" w-0"}   `} />
         </div>
         </div>

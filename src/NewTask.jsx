@@ -108,12 +108,11 @@ export default function Newtask({setFormDataArray, setSavedNav, complete}){
           
        
 
-        <div className="first-part">
+        <div className="first-part ">
 
-        <div className="back-search">
-        <i onClick={back} className="fa-regular fa-arrow-left"></i>
+        <div className="back-search w-[55%]">
+        <i onClick={back} className="fa-solid fa-house"></i>
         <p>Create a Task</p>
-        <i className="fa-regular fa-magnifying-glass"></i>
         </div>
 
         <form id="myForm" onSubmit={handleSubmit} action="">

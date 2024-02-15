@@ -42,7 +42,7 @@ const toggleAbout = () => {
     return(
 
       <div   className={` left-[-40vw] top-0 z-20 w-[40vw] bg-white h-[100vh] slide-in-container ${moveBars ? 'open' : ''}`} >
-        <i onClick={turnOff} class="fa-solid absolute  text-2xl p-2 mt-[0.4rem] ml-[8rem] fa-xmark"></i>
+        <i onClick={turnOff} className="fa-solid absolute  text-2xl p-2 mt-[0.4rem] ml-[8rem] fa-xmark"></i>
         <div onClick={toggleAbout} ref={dropdownRef} className="grid bg-[#1a2824] text-white grid-cols-2 py-[1rem] my-[9.6rem] px-[2rem] items-center gap-6 ">
             <img src={aboutSvg} className="w-[1.5rem]" alt="" />
             <p>About</p>

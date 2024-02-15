@@ -58,7 +58,7 @@ export default function Tasks ({event, formData, setFormData, index, markAsCompl
     return(
         <>
          <div ref={taskRef} id='expand' onClick={handleToggle} className={`task-item ${toggleDetails ? "expanded" : ""} mb-4 task2`}>
-            <div className={`taskk  ${toggleDetails ? "my-[1rem]" : ""}`}>
+            <div className={`taskk    ${toggleDetails ? "my-[1rem]" : ""}`}>
 
               {/* {event.completed === true && <div className=" absolute top-0 right-0 bg-[#1a2824]   rounded-se-[15px] text-white text-[11px] shadow-xl px-2 py-[4px] rounded-es  ">Completed</div>} */}
               <i className="fa-sharp fa-regular fa-calendar-days"></i>

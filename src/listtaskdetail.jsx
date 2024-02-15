@@ -45,11 +45,7 @@ export default function ListTask({listTaskDetail, setListTaskDetail}){
         e.stopPropagation();
       }
     
-      useEffect(() => {
-        // This effect will run whenever listTaskDetail changes
-        // You can perform any actions here that depend on the updated state
-        console.log('listTaskDetail changed:', listTaskDetail);
-      }, [listTaskDetail]);
+      
 
     return(
         <>
