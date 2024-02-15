@@ -196,18 +196,4 @@
   }
 
 
-  .completeTag::after{
-    content: "complete";
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 2rem;
-    position:  ;
-    width: 3rem;
-    background-color: #1a2824;
-    border-radius: 0 15px 0 5px;
-    padding: 4px 2px;
-    color: white;
-    box-shadow: 0 7px 11px -8px black;
-    font-size: 11px;
-  }
+  

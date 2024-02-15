@@ -11,18 +11,31 @@
 }
 
 .back-search{
-    display: flex;
     flex-direction: row;
     font-weight: 500;
     font-size: 20px;
-    gap: 20vw;
     align-items: center;
-    justify-content: space-between;
+    justify-content:start;
+    position: relative;
+    margin: 0 0 6rem;
+    
 }
 .back-search > i{
     color: #ddb;
 }
 
+#create{
+    position: absolute;
+    width: 100%;
+    /* margin: 0 auto; */
+    text-align: center;
+    top: 0;
+}
+.house{
+    z-index: 5;
+    position: absolute;
+    top: 0.3rem;
+}
 
 .identity > input{
     border: none;

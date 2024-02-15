@@ -118,8 +118,8 @@ const eventsForSelectedDate = formData.filter((event) =>
         <div onClick={() => {}} className="w-full   bg-[#c0c5c46e]  p-10 pb-[10rem]">
 
           <div className="calendarNav ">
-        <i onClick={back} className="fa-solid fa-house"></i>
-        <div className={`flex flex-row-reverse absolute right-10 -mt-2  transitSearch  gap-[1rem] ${!search ? " " : ""} items-center` }>
+        <i onClick={back} className="fa-solid text-xl font-medium fa-house"></i>
+        <div className={`flex flex-row-reverse absolute right-10   transitSearch  gap-[1rem] ${!search ? " " : ""} items-center` }>
       <label htmlFor="search"> 
         <i onClick={handleSearch} htmlFor='search' className="fa-regular p-2 relative fa-magnifying-glass"></i></label>
         <input type="text"   onKeyDown={ () => {
