@@ -13,43 +13,43 @@ export default function App(){
   const [complete, setComplete] = React.useState('');
   const [formDataArray, setFormDataArray] = useState([{
     id: 1,  
-    name: "Take out",
+    name: "Clean the kitchen",
     date: "01/12/2023",
       startTime: "12:00",
       endTime: "13:00",
-      description: "Take out the trash",
+      description: "also, remember to take out the trash",
       category: "Testing",
       completed: true
     },
     {
       id: 2,  
-      name: "Go to school",
+      name: "Do your assignments",
       date: "30/11/2023",
       startTime: "08:00",
       endTime: "08:30",
-      description: "It's a new day, time to go to school",
+      description: "There are four assignments in total",
       category: "Testing",
       completed:true,
     },
     {
       id: 3,  
-      name: "Get it done",
+      name: "Take the car to the service center",
       date: "02/02/2024",
       startTime: "12:00",
       endTime: "13:00",
-      description: "Take out the bin",
+      description: "important!",
       category: "Testing",
       completed: false
     },
     {
       id: 4,   
-      name: "Pass your exams",
-      date: "02/01/2015",
-      startTime: "12:00",
-      endTime: "13:00",
-      description: "Take out the trash",
+      name: "Catch the game on Saturday",
+      date: "17/02/2024",
+      startTime: "18:30",
+      endTime: "20:30",
+      description: "Time to thrash Celta for Xavi",
       category: "Testing",
-      completed: true    }])
+      completed: false    }])
 
 
     let saveLocation = window.location.pathname;
