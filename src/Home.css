@@ -5,22 +5,32 @@
     background-size: contain;
     background-repeat: no-repeat;
     padding: 1rem;
-    box-sizing: border-box;
+    box-sizing: content-box;
     color: #fff;
     word-wrap: break-word;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     font-size: 14.5px;
-    white-space: normal;
+    /* white-space: normal; */
     
 }
 
 .tileName, .tileDescribe{
-    white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex-shrink: 0;
+    white-space: normal;
+  /* overflow-x: hidden; */
+  word-wrap: break-word;
+  /* word-break: break-all; */
   
+  width: 56%;
+  text-overflow: ellipsis;
+  /* text-overflow: clip; */
+  /* background-color: aqua; */
+  
+}
+.tileDescribe{
+  width: 80%;
 }
 
 

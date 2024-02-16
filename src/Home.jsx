@@ -123,6 +123,22 @@ const closeMenu = () => {
   setMoveBars(false);
 }
 const dropdownReff = useClickOutside(closeMenu);
+
+function getGreeting() {
+  const currentHour = new Date().getHours();
+
+  if (currentHour >= 5 && currentHour < 12) {
+    return 'Good morning';
+  } else if (currentHour >= 12 && currentHour < 18) {
+    return 'Good afternoon';
+  } else {
+    return 'Good evening';
+  }
+}
+
+// Example usage
+const greeting = getGreeting();
+
  
     return(
         <div  className={moveBars ? "overflow-hidden" : "overflow"} style={myStyle}>
@@ -136,7 +152,7 @@ const dropdownReff = useClickOutside(closeMenu);
 
 
 
-    <p className="">Good day, User</p>
+    <p className="">{greeting}, User</p>
     <p>Have a nice day</p>
     
           </div>

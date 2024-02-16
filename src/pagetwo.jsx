@@ -131,7 +131,7 @@ const eventsForSelectedDate = formData.filter((event) =>
         </div>
       <div onClick={searchListClick}>
 
-      {(isSearchInitiated ) &&  <ul className="absolute top-[3.7653rem] leading-[2.6rem] ml-10 w-[15rem] bg-white rounded-b-md">
+      {(isSearchInitiated ) &&  <ul className="absolute top-[4.2653rem] leading-[2.6rem] ml-10 w-[15rem] bg-white rounded-b-md">
         {searchResults.map((result, index) => (<div> {(searchQuery != "") &&
           <li onClick={() =>        
             handleListOption(result)} className="pl-2 border-t-2" key={index}>{result.name}
